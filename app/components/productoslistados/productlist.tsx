@@ -11,7 +11,6 @@ export const ProductsList = () => {
   const [message, setMessage] = useState<string | number>("");
   const [error, setError] = useState<boolean | null>(null);
   const router = useRouter();
-  console
   useEffect(() => {
     setProductos(datos);
   }, [datos]);
