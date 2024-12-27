@@ -1,7 +1,7 @@
 "use client";
 import { useDatos } from "@/context/usedatos";
 import { Venta } from "@prisma/client";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function ItemVentas() {
@@ -10,7 +10,6 @@ export default function ItemVentas() {
     const [err, setError] = useState(false);
     const [relatedVentas, setRelatedVentas] = useState<Venta[]>([]);
     const { ventas } = useDatos();
-    const router = useRouter();
 
     useEffect(() => {
         // Extrae el ID del producto de la ruta
@@ -54,6 +53,11 @@ export default function ItemVentas() {
         <div>
             {relatedVentas.length > 0 ? (
                 <>
+                    {
+                        message && (
+                            <p className={`${err ? "text-red-500" : "text-green-700"}`}>{message}</p>
+                        )
+                    }
                     <h3 className="text-lg font-medium text-gray-600 mb-2">
                         Ventas Relacionadas
                     </h3>

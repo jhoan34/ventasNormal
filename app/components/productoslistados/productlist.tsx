@@ -1,22 +1,20 @@
 "use client";
 import { useDatos } from "@/context/usedatos";
 import { useState, useEffect } from "react";
-import { Producto, Venta } from "@prisma/client";
+import { Producto } from "@prisma/client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export const ProductsList = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
-  const [ventas, setVentas] = useState<Venta[]>([]);
-  const { productos: datos, ventas: vent } = useDatos();
+  const { productos: datos} = useDatos();
   const [message, setMessage] = useState<string | number>("");
   const [error, setError] = useState<boolean | null>(null);
   const router = useRouter();
-
+  console
   useEffect(() => {
     setProductos(datos);
-    setVentas(vent);
-  }, [datos, vent]);
+  }, [datos]);
 
   const handleDelete = async (id: string) => {
     try {

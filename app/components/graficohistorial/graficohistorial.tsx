@@ -30,7 +30,7 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function Graficohistorial() {
-  const { productos, gastos, ventas } = useDatos()
+  const { gastos, ventas } = useDatos()
 
   // Procesar datos para la gráfica
   const chartData = ventas.map((venta, index) => {
