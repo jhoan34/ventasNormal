@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL") // Asegúrate de configurar la variable en .env
+}
+
+model Producto {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  nombre     String
+  precio     Float
+  costo      Float
+  stock      Int
+  urlImagen  String
+  Ventas     Venta[] @relation("ProductoVentas")
+}
+
+model Venta {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  producto   Producto @relation("ProductoVentas", fields: [productoId], references: [id])
+  productoId String   @db.ObjectId
+  cantidad   Int
+  monto      Float
+  ganancia   Float
+}
+
+model Gasto {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  monto       Float
+  descripcion String
+}
