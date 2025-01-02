@@ -1,17 +1,15 @@
 "use client";
 import { useState} from "react";
 import { Producto } from "@prisma/client";
-import { useRouter } from "next/navigation";
 
 export const FormProductos = () => {
-    const [productos, setProductos] = useState<Omit<Producto, 'id'>>({
+    const [productos, setProductos] = useState<Pick<Producto, "nombre" | "precio" | "costo" | "stock" | "urlImagen">>({
         nombre: '',
         precio: 0,
         costo: 0,
         stock: 0,
         urlImagen: ''
     });    
-    const router = useRouter();
     const [message, setMessage] = useState<string | number>("");
     const [err, setErr] = useState(false);
 
@@ -54,7 +52,7 @@ export const FormProductos = () => {
                 urlImagen: ''
             })
 
-            router.refresh();
+            window.location.reload()
         } catch (error) {
             setErr(true);
             setMessage(error instanceof Error ? error.message : "Error al registrar producto");

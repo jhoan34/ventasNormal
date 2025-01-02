@@ -8,13 +8,15 @@ datasource db {
 }
 
 model Producto {
-  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
   nombre     String
   precio     Float
   costo      Float
   stock      Int
   urlImagen  String
-  Ventas     Venta[] @relation("ProductoVentas")
+  Ventas     Venta[]  @relation("ProductoVentas")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 model Venta {
@@ -24,10 +26,14 @@ model Venta {
   cantidad   Int
   monto      Float
   ganancia   Float
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 model Gasto {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   monto       Float
   descripcion String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

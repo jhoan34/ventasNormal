@@ -40,8 +40,27 @@ export const DatosProvider: React.FC<DatosProviderProps> = ({ children }) => {
     }, []);
 
     if (loading) {
-        return <div>Cargando datos...</div>;
+        return (
+            <div
+                style={{
+                    backgroundColor: "black",
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    zIndex: 9999,
+                }}
+            >
+                <p style={{ color: "white", fontSize: "1.5rem", fontWeight: "bold", fontFamily: "sans-serif" }}>Espere un momento, Cargando...</p>
+            </div>
+        );
     }
+    
+    
 
     if (error) {
         return <div>Error: {error}</div>;

@@ -5,6 +5,11 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+:root {
+  --color-mobile: #4caf50; /* Color para gastos */
+  --color-desktop: #2196f3; /* Color para ventas */
+}
+
 
 @layer base {
   :root {

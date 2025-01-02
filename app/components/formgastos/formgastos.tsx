@@ -1,14 +1,12 @@
 "use client";
 import { useState } from "react";
 import { Gasto } from "@prisma/client";
-import { useRouter } from "next/navigation";
 
 export const FormGastos = () => {
-    const [ gasto, setGasto ] = useState<Omit<Gasto, 'id'>>({
+    const [ gasto, setGasto ] = useState<Pick<Gasto, "monto" | "descripcion" >>({
         monto : 0 ,
         descripcion : ""
     });
-    const router = useRouter();
     const [ message, setMessage ] = useState<string | number>("");
     const [ err, setErr ] = useState(false);
 
@@ -44,7 +42,7 @@ export const FormGastos = () => {
                 monto : 0,
                 descripcion : ""
             })
-            router.refresh();
+            window.location.reload()
         } catch (error) {
             setErr(true);
             setMessage(error instanceof Error ? error.message : "Error desconocido");

@@ -99,6 +99,7 @@ export const FormVentas = () => {
       setMonto(0);
       setGanancia(0);
       setSelectedProductoId("");
+      window.location.reload();
     } catch (error) {
       setError(true);
       setMessage(

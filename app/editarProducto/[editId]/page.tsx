@@ -6,7 +6,7 @@ import { useDatos } from "@/context/usedatos";
 
 export default function ItemVentas() {
     const [productoFiltrado, setProductoFiltrado] = useState<Producto | undefined>();
-    const [productos, setProductos] = useState<Omit<Producto, 'id'>>({
+    const [productos, setProductos] = useState<Pick<Producto, "nombre" | "precio" | "costo" | "stock" | "urlImagen">>({
         nombre: '',
         precio: 0,
         costo: 0,
@@ -74,7 +74,7 @@ export default function ItemVentas() {
 
             setErr(false);
             setMessage(data.message);
-            router.refresh();
+            router.push("/");
         } catch (error) {
             setErr(true);
             setMessage(error instanceof Error ? error.message : "Error al registrar producto");

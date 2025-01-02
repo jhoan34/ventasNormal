@@ -10,7 +10,6 @@ export const ProductsList = () => {
   const { productos: datos} = useDatos();
   const [message, setMessage] = useState<string | number>("");
   const [error, setError] = useState<boolean | null>(null);
-  const router = useRouter();
   useEffect(() => {
     setProductos(datos);
   }, [datos]);
@@ -27,12 +26,19 @@ export const ProductsList = () => {
 
       setError(false);
       setMessage("Producto eliminado exitosamente");
-      router.refresh();
+      setTimeout(() => {
+        setMessage("")
+      }, 3000);
+      setProductos((prev) => prev.filter((prod) => prod.id !== id))
+      
     } catch (error) {
       setError(true);
       setMessage(
         error instanceof Error ? error.message : "Error al registrar producto"
       );
+      setTimeout(() => {
+        setMessage("")
+      }, 3000)
     }
   };
 
@@ -53,7 +59,7 @@ export const ProductsList = () => {
           return (
             <div
               key={producto.id}
-              className="p-4 bg-gray-800 shadow-md rounded-md"
+              className="p-4 bg-gray-800 shadow-md rounded-md overflow-auto"
             >
               <h2 className="text-xl font-semibold text-gray-200 mb-4">
                 {producto.nombre}
@@ -66,6 +72,9 @@ export const ProductsList = () => {
                     <th className="px-4 py-2 border border-gray-600">Precio</th>
                     <th className="px-4 py-2 border border-gray-600">Costo</th>
                     <th className="px-4 py-2 border border-gray-600">Stock</th>
+                    <th className="px-4 py-2 border border-gray-600">Fecha Creada</th>
+                    <th className="px-4 py-2 border border-gray-600">Fecha Modificada</th>
+
                     <th className="px-4 py-2 border border-gray-600">
                       URL Imagen
                     </th>
@@ -78,7 +87,7 @@ export const ProductsList = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="overflow-auto">
                   <tr className="bg-gray-800 hover:bg-gray-700">
                     <td className="px-4 py-2 border border-gray-600">
                       {producto.id}
@@ -96,6 +105,12 @@ export const ProductsList = () => {
                       {producto.stock}
                     </td>
                     <td className="px-4 py-2 border border-gray-600">
+                      {new Date(producto.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="px-4 py-2 border border-gray-600">
+                      {new Date(producto.updatedAt).toLocaleDateString()}
+                    </td>
+                    <td className="px-4 py-2 border border-gray-600 overflow-auto">
                       {producto.urlImagen}
                     </td>
                     <td className="px-4 py-2 border border-gray-600">

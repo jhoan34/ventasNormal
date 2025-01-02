@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Gasto } from "@prisma/client";
 import { useDatos } from "@/context/usedatos";
 
+
 export const ListGastos = () => {
   const [gastosPrime, setGastoPrime] = useState<Gasto[]>([]);
   const [message, setMessage] = useState<string | number>("");
@@ -31,10 +32,16 @@ export const ListGastos = () => {
 
       setErr(false);
       setMessage(data.message);
+      setTimeout(() => {
+        setMessage("")
+      }, 3000);
       setGastoPrime((prev) => prev.filter((gasto) => gasto.id !== id));
     } catch (error) {
       setErr(true);
       setMessage(error instanceof Error ? error.message : "Error desconocido");
+      setTimeout(() => {
+        setMessage("")
+      }, 3000);
     }
   };
 
@@ -57,6 +64,8 @@ export const ListGastos = () => {
               <th className="px-6 py-3">ID</th>
               <th className="px-6 py-3">Monto</th>
               <th className="px-6 py-3">Descripción</th>
+              <th className="px-6 py-3">Fecha Creada</th>
+              <th className="px-6 py-3">Fecha Modificada</th>
               <th className="px-6 py-3">Acciones</th>
             </tr>
           </thead>
@@ -67,8 +76,10 @@ export const ListGastos = () => {
                 className="border-b bg-gray-700 border-gray-600 hover:bg-gray-600"
               >
                 <td className="px-6 py-4">{gasto.id}</td>
-                <td className="px-6 py-4">{gasto.monto}</td>
+                <td className="px-6 py-4">{gasto.monto.toLocaleString("es-CO")} COP</td>
                 <td className="px-6 py-4">{gasto.descripcion}</td>
+                <th className="px-6 py-4">{new Date(gasto.createdAt).toLocaleDateString() }</th>
+                <th className="px-6 py-4">{new Date(gasto.updatedAt).toLocaleDateString()}</th>
                 <td className="px-6 py-4">
                   <button
                     onClick={() => handleDelete(gasto.id)}

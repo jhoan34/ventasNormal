@@ -69,6 +69,8 @@ export default function ItemVentas() {
                                 <th className="px-4 py-2 border">Cantidad</th>
                                 <th className="px-4 py-2 border">Monto</th>
                                 <th className="px-4 py-2 border">Ganancia</th>
+                                <th className="px-4 py-2 border">Fecha creada</th>
+                                <th className="px-4 py-2 border">Fecha Modificada</th>
                                 <th className="px-4 py-2 border">Eliminar Venta</th>
                             </tr>
                         </thead>
@@ -83,6 +85,8 @@ export default function ItemVentas() {
                                     <td className="px-4 py-2 border">{venta.cantidad}</td>
                                     <td className="px-4 py-2 border">{venta.monto.toLocaleString("es-CO")}COP</td>
                                     <td className="px-4 py-2 border">{venta.ganancia.toLocaleString("es-CO")}COP</td>
+                                    <td className="px-4 py-2 border">{new Date(venta.createdAt).toLocaleDateString()}</td>
+                                    <td className="px-4 py-2 border">{new Date(venta.updatedAt).toLocaleDateString()}</td>                               
                                     <td>
                                         <button
                                             onClick={() => handleDelete(venta.id)}
