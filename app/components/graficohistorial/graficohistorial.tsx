@@ -71,9 +71,9 @@ export function Graficohistorial() {
   console.log("Total Gastos:", totalGastos);
   
   // Generar datos para la gráfica
-  const chartData = meses.slice(0, -1 ).map((mes, index) => ({
+  const chartData = meses.slice(0, -1 ).map((mes) => ({
     month: mes,
-    desktop: 10000000, // Ganancia total de ventas
+    desktop: totalVentas.ganancia, // Ganancia total de ventas
     mobile: totalGastos || 0,          // Total de gastos
   }));
   

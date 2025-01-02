@@ -3,7 +3,6 @@ import { useDatos } from "@/context/usedatos";
 import { useState, useEffect } from "react";
 import { Producto } from "@prisma/client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export const ProductsList = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
