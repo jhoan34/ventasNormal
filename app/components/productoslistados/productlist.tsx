@@ -42,7 +42,7 @@ export const ProductsList = () => {
   };
 
   return (
-    <div className="p-6 bg-black min-h-screen w-[95%]">
+    <div className="p-6 min-h-screen w-[95%]">
       {message && (
         <div
           className={`${
@@ -57,61 +57,61 @@ export const ProductsList = () => {
           return (
             <div
               key={producto.id}
-              className="p-4 bg-black shadow-md rounded-md overflow-auto"
+              className="p-4 shadow-md rounded-md overflow-auto"
             >
-              <h2 className="text-xl font-semibold text-gray-200 mb-4">
+              <h2 className="text-xl font-semibold text-black mb-4">
                 {producto.nombre}
               </h2>
-              <table className="w-full text-sm text-left text-gray-400 border border-gray-700 mb-4">
-                <thead className="bg-black text-gray-300 uppercase text-xs">
+              <table className="w-full text-sm text-left text-black border border-gray-700 mb-4">
+                <thead className="bg-[#EE7890] text-gray-300 uppercase text-xs">
                   <tr>
-                    <th className="px-4 py-2 border border-gray-600">ID</th>
-                    <th className="px-4 py-2 border border-gray-600">Nombre</th>
-                    <th className="px-4 py-2 border border-gray-600">Precio</th>
-                    <th className="px-4 py-2 border border-gray-600">Costo</th>
-                    <th className="px-4 py-2 border border-gray-600">Stock</th>
-                    <th className="px-4 py-2 border border-gray-600">Fecha Creada</th>
-                    <th className="px-4 py-2 border border-gray-600">Fecha Modificada</th>
+                    <th className="px-4 py-5 text-center text-black border-2 border-black">ID</th>
+                    <th className="px-4 py-5 text-center text-black border-2 border-black">Nombre</th>
+                    <th className="px-4 py-5 text-center text-black border-2 border-black">Precio</th>
+                    <th className="px-4 py-5 text-center text-black border-2 border-black">Costo</th>
+                    <th className="px-4 py-5 text-center text-black border-2 border-black">Stock</th>
+                    <th className="px-4 py-5 text-center text-black border-2 border-black">Fecha Creada</th>
+                    <th className="px-4 py-5 text-center text-black border-2 border-black">Fecha Modificada</th>
 
-                    <th className="px-4 py-2 border border-gray-600">
+                    <th className="px-4 py-2 border-2 text-black border-black">
                       URL Imagen
                     </th>
-                    <th className="px-4 py-2 border border-gray-600">
+                    <th className="px-4 py-2 border-2 text-black border-black">
                       Ver Ventas
                     </th>
-                    <th className="px-4 py-2 border border-gray-600">Editar</th>
-                    <th className="px-4 py-2 border border-gray-600">
+                    <th className="px-4 py-2 border-2 text-black border-black">Editar</th>
+                    <th className="px-4 py-2 border-2 text-black border-black">
                       Eliminar
                     </th>
                   </tr>
                 </thead>
                 <tbody className="overflow-auto">
-                  <tr className="bg-black hover:bg-gray-700">
-                    <td className="px-4 py-2 border border-gray-600">
+                  <tr>
+                    <td className="px-4 py-2 border-2 border-black">
                       {producto.id}
                     </td>
-                    <td className="px-4 py-2 border border-gray-600">
+                    <td className="px-4 py-2 border-2 border-black">
                       {producto.nombre}
                     </td>
-                    <td className="px-4 py-2 border border-gray-600">
+                    <td className="px-4 py-2 border-2 border-black">
                       {producto.precio.toLocaleString("es-co")} COP
                     </td>
-                    <td className="px-4 py-2 border border-gray-600">
+                    <td className="px-4 py-2 border-2 border-black">
                       {producto.costo.toLocaleString("es-co")} COP
                     </td>
-                    <td className="px-4 py-2 border border-gray-600">
+                    <td className="px-4 py-2 border-2 border-black">
                       {producto.stock}
                     </td>
-                    <td className="px-4 py-2 border border-gray-600">
+                    <td className="px-4 py-2 border-2 border-black">
                       {new Date(producto.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="px-4 py-2 border border-gray-600">
+                    <td className="px-4 py-2 border-2 border-black">
                       {new Date(producto.updatedAt).toLocaleDateString()}
                     </td>
-                    <td className="px-4 py-2 border border-gray-600 overflow-auto">
+                    <td className="px-4 py-2 border-2 border-black overflow-auto">
                       {producto.urlImagen}
                     </td>
-                    <td className="px-4 py-2 border border-gray-600">
+                    <td className="px-4 py-2 border-2 border-black">
                       <Link
                         href={`/itemVentas/${producto.id}`}
                         className="text-blue-400 hover:underline"
@@ -119,7 +119,7 @@ export const ProductsList = () => {
                         Ver Ventas
                       </Link>
                     </td>
-                    <td className="px-4 py-2 border border-gray-600">
+                    <td className="px-4 py-2 border-2 border-black">
                       <Link
                         href={`/editarProducto/${producto.id}`}
                         className="text-yellow-400 hover:underline"
@@ -127,7 +127,7 @@ export const ProductsList = () => {
                         Editar
                       </Link>
                     </td>
-                    <td className="px-4 py-2 border border-gray-600">
+                    <td className="px-4 py-2 border-2 border-black">
                       <button
                         onClick={() => handleDelete(producto.id)}
                         className="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded-md"

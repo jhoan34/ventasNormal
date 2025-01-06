@@ -46,8 +46,8 @@ export const ListGastos = () => {
   };
 
   return (
-    <div className=" bg-black min-h-screen w-full p-20">
-      <h1 className="text-2xl text-white font-bold mb-6">Lista de Gastos</h1>
+    <div className="min-h-screen w-full p-20">
+      <h1 className="text-2xl text-black font-bold mb-6">Lista de Gastos</h1>
       {message && (
         <div
           className={`${
@@ -58,29 +58,29 @@ export const ListGastos = () => {
         </div>
       )}
       <div className="overflow-x-auto">
-        <table className="table-auto w-full text-sm text-left text-gray-400">
-          <thead className="text-xs uppercase bg-black text-gray-300">
-            <tr className="border-2 border-gray-600">
-              <th className="px-6 py-3">ID</th>
-              <th className="px-6 py-3">Monto</th>
-              <th className="px-6 py-3">Descripción</th>
-              <th className="px-6 py-3">Fecha Creada</th>
-              <th className="px-6 py-3">Fecha Modificada</th>
-              <th className="px-6 py-3">Acciones</th>
+        <table className="table-auto w-full text-sm text-left text-black border border-black">
+          <thead className="text-xs uppercase bg-[#EE7890] text-black">
+            <tr className="border-2 border-black">
+              <th className="px-6 py-3 border border-black">ID</th>
+              <th className="px-6 py-3 border border-black">Monto</th>
+              <th className="px-6 py-3 border border-black">Descripción</th>
+              <th className="px-6 py-3 border border-black">Fecha Creada</th>
+              <th className="px-6 py-3 border border-black">Fecha Modificada</th>
+              <th className="px-6 py-3 border border-black ">Acciones</th>
             </tr>
           </thead>
           <tbody>
             {gastosPrime.map((gasto: Gasto) => (
               <tr
                 key={gasto.id}
-                className="border-2 bg-black border-gray-600 hover:bg-gray-600"
+                className="border-2 border-black"
               >
-                <td className="px-6 py-4">{gasto.id}</td>
-                <td className="px-6 py-4">{gasto.monto.toLocaleString("es-CO")} COP</td>
-                <td className="px-6 py-4">{gasto.descripcion}</td>
-                <th className="px-6 py-4">{new Date(gasto.createdAt).toLocaleDateString() }</th>
-                <th className="px-6 py-4">{new Date(gasto.updatedAt).toLocaleDateString()}</th>
-                <td className="px-6 py-4">
+                <td className="px-6 py-4 border border-black ">{gasto.id}</td>
+                <td className="px-6 py-4 border border-black ">{gasto.monto.toLocaleString("es-CO")} COP</td>
+                <td className="px-6 py-4 border border-black ">{gasto.descripcion}</td>
+                <th className="px-6 py-4 border border-black ">{new Date(gasto.createdAt).toLocaleDateString() }</th>
+                <th className="px-6 py-4 border border-black ">{new Date(gasto.updatedAt).toLocaleDateString()}</th>
+                <td className="px-6 py-4 border border-black ">
                   <button
                     onClick={() => handleDelete(gasto.id)}
                     className="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded-md"

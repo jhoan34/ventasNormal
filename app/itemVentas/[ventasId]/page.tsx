@@ -12,7 +12,6 @@ export default function ItemVentas() {
     const { ventas } = useDatos();
 
     useEffect(() => {
-        // Extrae el ID del producto de la ruta
         const productoId = pathna.split("/").pop();
 
         if (productoId) {
@@ -39,7 +38,6 @@ export default function ItemVentas() {
 
             const data = await response.json();
 
-            // Manejo exitoso
             setError(false);
             setMessage(data.message);
             setRelatedVentas((prevVentas) => prevVentas.filter((venta) => venta.id !== id));
@@ -50,47 +48,47 @@ export default function ItemVentas() {
     };
 
     return (
-        <div>
+        <div className="min-h-screen w-full bg-black flex flex-col  p-8">
+            {message && (
+                <p className={`text-lg font-semibold mb-6 ${err ? "text-red-600" : "text-green-600"}`}>
+                    {message}
+                </p>
+            )}
+            <h3 className="text-2xl text-center font-bold text-white mb-8">
+                Ventas Relacionadas
+            </h3>
             {relatedVentas.length > 0 ? (
-                <>
-                    {
-                        message && (
-                            <p className={`${err ? "text-red-500" : "text-green-700"}`}>{message}</p>
-                        )
-                    }
-                    <h3 className="text-lg font-medium text-gray-600 mb-2">
-                        Ventas Relacionadas
-                    </h3>
-                    <table className="w-full text-sm text-left text-gray-500 border border-gray-200">
-                        <thead className="bg-gray-100 text-gray-600 uppercase text-xs">
+                <div className="w-full ">
+                    <table className="w-full text-base text-left bg-white text-gray-700 border border-gray-300 shadow-md rounded-md">
+                        <thead className="bg-pink-200 text-gray-800 uppercase font-semibold">
                             <tr>
-                                <th className="px-4 py-2 border">ID</th>
-                                <th className="px-4 py-2 border">ProductoId</th>
-                                <th className="px-4 py-2 border">Cantidad</th>
-                                <th className="px-4 py-2 border">Monto</th>
-                                <th className="px-4 py-2 border">Ganancia</th>
-                                <th className="px-4 py-2 border">Fecha creada</th>
-                                <th className="px-4 py-2 border">Fecha Modificada</th>
-                                <th className="px-4 py-2 border">Eliminar Venta</th>
+                                <th className="px-6 py-4 border border-gray-300">ID</th>
+                                <th className="px-6 py-4 border border-gray-300">ProductoId</th>
+                                <th className="px-6 py-4 border border-gray-300">Cantidad</th>
+                                <th className="px-6 py-4 border border-gray-300">Monto</th>
+                                <th className="px-6 py-4 border border-gray-300">Ganancia</th>
+                                <th className="px-6 py-4 border border-gray-300">Fecha creada</th>
+                                <th className="px-6 py-4 border border-gray-300">Fecha Modificada</th>
+                                <th className="px-6 py-4 border border-gray-300">Eliminar Venta</th>
                             </tr>
                         </thead>
                         <tbody>
                             {relatedVentas.map((venta: Venta) => (
                                 <tr
                                     key={venta.id}
-                                    className="bg-white hover:bg-gray-50"
+                                    className="hover:bg-gray-100"
                                 >
-                                    <td className="px-4 py-2 border">{venta.id}</td>
-                                    <td className="px-4 py-2 border">{venta.productoId}</td>
-                                    <td className="px-4 py-2 border">{venta.cantidad}</td>
-                                    <td className="px-4 py-2 border">{venta.monto.toLocaleString("es-CO")}COP</td>
-                                    <td className="px-4 py-2 border">{venta.ganancia.toLocaleString("es-CO")}COP</td>
-                                    <td className="px-4 py-2 border">{new Date(venta.createdAt).toLocaleDateString()}</td>
-                                    <td className="px-4 py-2 border">{new Date(venta.updatedAt).toLocaleDateString()}</td>                               
-                                    <td>
+                                    <td className="px-6 py-4 border border-gray-300">{venta.id}</td>
+                                    <td className="px-6 py-4 border border-gray-300">{venta.productoId}</td>
+                                    <td className="px-6 py-4 border border-gray-300">{venta.cantidad}</td>
+                                    <td className="px-6 py-4 border border-gray-300">{venta.monto.toLocaleString("es-CO")} COP</td>
+                                    <td className="px-6 py-4 border border-gray-300">{venta.ganancia.toLocaleString("es-CO")} COP</td>
+                                    <td className="px-6 py-4 border border-gray-300">{new Date(venta.createdAt).toLocaleDateString()}</td>
+                                    <td className="px-6 py-4 border border-gray-300">{new Date(venta.updatedAt).toLocaleDateString()}</td>
+                                    <td className="px-6 py-4 border border-gray-300">
                                         <button
                                             onClick={() => handleDelete(venta.id)}
-                                            className="text-red-500 hover:text-red-700"
+                                            className="text-red-500 font-medium hover:text-red-700"
                                         >
                                             Eliminar
                                         </button>
@@ -99,9 +97,9 @@ export default function ItemVentas() {
                             ))}
                         </tbody>
                     </table>
-                </>
+                </div>
             ) : (
-                <p className="text-gray-500">No hay ventas relacionadas.</p>
+                <p className="text-lg text-gray-500">No hay ventas relacionadas.</p>
             )}
         </div>
     );

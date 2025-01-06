@@ -82,10 +82,12 @@ export default function ItemVentas() {
     };
 
     return (
-        <div className="w-full min-h-screen flex justify-center items-center p-6 bg-gradient-to-t from-gray-800 to-gray-950 rounded-lg shadow-lg text-white">
-            <form onSubmit={handleSubmit} className="w-[40%] h-[70vh] ">
+        <div className="w-full min-h-screen flex justify-center items-center p-6 bg-black shadow-lg text-white">
+            <form onSubmit={handleSubmit} className="w-[30%] h-auto flex flex-col gap-6 p-8 bg-gray-800 rounded-lg shadow-xl">
                 <div className="space-y-2">
-                    <label htmlFor="nombre" className="block text-sm font-medium text-gray-300">Nombre del Producto:</label>
+                    <label htmlFor="nombre" className="block text-sm font-medium text-gray-300">
+                        Nombre del Producto:
+                    </label>
                     <input 
                         value={productos.nombre} 
                         onChange={(e) => change(e)} 
@@ -97,7 +99,9 @@ export default function ItemVentas() {
                     />
                 </div>
                 <div className="space-y-2">
-                    <label htmlFor="precio" className="block text-sm font-medium text-gray-300">Precio del Producto:</label>
+                    <label htmlFor="precio" className="block text-sm font-medium text-gray-300">
+                        Precio del Producto:
+                    </label>
                     <input 
                         value={productos.precio} 
                         onChange={(e) => change(e)} 
@@ -109,7 +113,9 @@ export default function ItemVentas() {
                     />
                 </div>
                 <div className="space-y-2">
-                    <label htmlFor="costo" className="block text-sm font-medium text-gray-300">Costo del Producto:</label>
+                    <label htmlFor="costo" className="block text-sm font-medium text-gray-300">
+                        Costo del Producto:
+                    </label>
                     <input 
                         value={productos.costo} 
                         onChange={(e) => change(e)} 
@@ -121,7 +127,9 @@ export default function ItemVentas() {
                     />
                 </div>
                 <div className="space-y-2">
-                    <label htmlFor="stock" className="block text-sm font-medium text-gray-300">Stock del Producto:</label>
+                    <label htmlFor="stock" className="block text-sm font-medium text-gray-300">
+                        Stock del Producto:
+                    </label>
                     <input 
                         value={productos.stock} 
                         onChange={(e) => change(e)} 
@@ -133,7 +141,9 @@ export default function ItemVentas() {
                     />
                 </div>
                 <div className="space-y-2">
-                    <label htmlFor="urlImagen" className="block text-sm font-medium text-gray-300">URL de la Imagen:</label>
+                    <label htmlFor="urlImagen" className="block text-sm font-medium text-gray-300">
+                        URL de la Imagen:
+                    </label>
                     <input 
                         value={productos.urlImagen} 
                         onChange={(e) => change(e)} 
@@ -146,7 +156,7 @@ export default function ItemVentas() {
                 </div>
                 <button 
                     type="submit" 
-                    className="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                     Registrar Producto
                 </button>
@@ -157,5 +167,6 @@ export default function ItemVentas() {
                 )}
             </form>
         </div>
+
     );
 }
