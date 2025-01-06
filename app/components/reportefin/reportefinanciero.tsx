@@ -43,9 +43,7 @@ export const ReporteFinanciero = () => {
     const gastoMasAltoDescripcion = gastos.find((g) => g.monto === gastoMasAlto)?.descripcion || "No disponible";
 
     return (
-        <div className="p-6 bg-gray-800 text-white min-h-screen">
-            <h1 className="text-4xl font-bold mb-8">Reporte Financiero Detallado</h1>
-
+        <div className="p-6 bg-black w-[90%] text-white min-h-screen ">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 <div className="p-4 bg-green-700 rounded-md shadow-md">
                     <h2 className="text-xl font-semibold mb-2">Total Ingresos</h2>

@@ -61,10 +61,10 @@ export const FormProductos = () => {
     }
 
     return (
-        <div className="max-w-md mx-auto p-6 h-full bg-white rounded-lg shadow-lg text-black">
+        <div className="max-w-md mx-auto p-6 h-full rounded-lg  text-black ">
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                    <label htmlFor="nombre" className="block text-sm font-medium text-gray-600">Nombre del Producto:</label>
+                    <label htmlFor="nombre" className="block text-sm font-medium text-white">Nombre del Producto:</label>
                     <input 
                         value={productos.nombre} 
                         onChange={(e) => change(e)} 
@@ -76,7 +76,7 @@ export const FormProductos = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="precio" className="block text-sm font-medium text-gray-600">Precio del Producto:</label>
+                    <label htmlFor="precio" className="block text-sm font-medium text-white">Precio del Producto:</label>
                     <input 
                         value={productos.precio} 
                         onChange={(e) => change(e)} 
@@ -88,7 +88,7 @@ export const FormProductos = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="costo" className="block text-sm font-medium text-gray-600">Costo del Producto:</label>
+                    <label htmlFor="costo" className="block text-sm font-medium text-white">Costo del Producto:</label>
                     <input 
                         value={productos.costo} 
                         onChange={(e) => change(e)} 
@@ -100,7 +100,7 @@ export const FormProductos = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="stock" className="block text-sm font-medium text-gray-600">Stock del Producto:</label>
+                    <label htmlFor="stock" className="block text-sm font-medium text-white">Stock del Producto:</label>
                     <input 
                         value={productos.stock} 
                         onChange={(e) => change(e)} 
@@ -112,7 +112,7 @@ export const FormProductos = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="urlImagen" className="block text-sm font-medium text-gray-600">URL de la Imagen:</label>
+                    <label htmlFor="urlImagen" className="block text-sm font-medium text-white">URL de la Imagen:</label>
                     <input 
                         value={productos.urlImagen} 
                         onChange={(e) => change(e)} 

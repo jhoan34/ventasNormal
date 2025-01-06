@@ -50,11 +50,10 @@ export const FormGastos = () => {
     }
 
     return (
-        <div className="max-w-md mx-auto h-full p-6 bg-white text-black rounded-lg shadow-lg">
-            <h1 className="text-2xl font-semibold text-gray-700 mb-6">Formulario de Gastos</h1>
+        <div className="max-w-md mx-auto h-full p-6 rounded-lg ">
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                    <label htmlFor="monto" className="block text-sm font-medium text-gray-600">Monto:</label>
+                    <label htmlFor="monto" className="block text-sm font-medium text-white">Monto:</label>
                     <input 
                         type="number" 
                         id="monto" 
@@ -66,7 +65,7 @@ export const FormGastos = () => {
                     />
                 </div>
                 <div className="mb-6">
-                    <label htmlFor="descripcion" className="block text-sm font-medium text-gray-600">Descripción:</label>
+                    <label htmlFor="descripcion" className="block text-sm font-medium text-white">Descripción:</label>
                     <input 
                         type="text" 
                         id="descripcion" 

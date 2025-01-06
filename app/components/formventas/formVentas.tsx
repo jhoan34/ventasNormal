@@ -109,12 +109,11 @@ export const FormVentas = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 h-full bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-semibold text-gray-700 mb-6">Registrar Venta</h2>
+    <div className="max-w-lg mx-auto p-6 h-full rounded-lg">
       <div className="space-y-4 text-gray-950">
         {/* Selector de producto */}
         <div>
-          <label htmlFor="producto" className="block text-sm font-medium text-gray-600">
+          <label htmlFor="producto" className="block text-sm font-medium text-white">
             Producto
           </label>
           <select
@@ -134,7 +133,7 @@ export const FormVentas = () => {
 
         {/* Cantidad */}
         <div>
-          <label htmlFor="cantidadVendida" className="block text-sm font-medium text-gray-600">
+          <label htmlFor="cantidadVendida" className="block text-sm font-medium text-white">
             Cantidad Vendida
           </label>
           <input
@@ -149,7 +148,7 @@ export const FormVentas = () => {
 
         {/* Monto y Ganancia */}
         <div>
-          <label htmlFor="monto" className="block text-sm font-medium text-gray-600">
+          <label htmlFor="monto" className="block text-sm font-medium text-white">
             Monto Total
           </label>
           <input
@@ -162,7 +161,7 @@ export const FormVentas = () => {
         </div>
 
         <div>
-          <label htmlFor="ganancia" className="block text-sm font-medium text-gray-600">
+          <label htmlFor="ganancia" className="block text-sm font-medium text-white">
             Ganancia Estimada
           </label>
           <input

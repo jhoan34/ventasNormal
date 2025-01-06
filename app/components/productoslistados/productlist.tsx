@@ -42,8 +42,7 @@ export const ProductsList = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-900 min-h-screen">
-      <h1 className="text-3xl font-bold text-white mb-6">Productos</h1>
+    <div className="p-6 bg-black min-h-screen w-[95%]">
       {message && (
         <div
           className={`${
@@ -58,13 +57,13 @@ export const ProductsList = () => {
           return (
             <div
               key={producto.id}
-              className="p-4 bg-gray-800 shadow-md rounded-md overflow-auto"
+              className="p-4 bg-black shadow-md rounded-md overflow-auto"
             >
               <h2 className="text-xl font-semibold text-gray-200 mb-4">
                 {producto.nombre}
               </h2>
               <table className="w-full text-sm text-left text-gray-400 border border-gray-700 mb-4">
-                <thead className="bg-gray-700 text-gray-300 uppercase text-xs">
+                <thead className="bg-black text-gray-300 uppercase text-xs">
                   <tr>
                     <th className="px-4 py-2 border border-gray-600">ID</th>
                     <th className="px-4 py-2 border border-gray-600">Nombre</th>
@@ -87,7 +86,7 @@ export const ProductsList = () => {
                   </tr>
                 </thead>
                 <tbody className="overflow-auto">
-                  <tr className="bg-gray-800 hover:bg-gray-700">
+                  <tr className="bg-black hover:bg-gray-700">
                     <td className="px-4 py-2 border border-gray-600">
                       {producto.id}
                     </td>

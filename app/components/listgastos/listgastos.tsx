@@ -46,7 +46,7 @@ export const ListGastos = () => {
   };
 
   return (
-    <div className=" bg-gray-900 min-h-screen w-full p-20">
+    <div className=" bg-black min-h-screen w-full p-20">
       <h1 className="text-2xl text-white font-bold mb-6">Lista de Gastos</h1>
       {message && (
         <div
@@ -59,8 +59,8 @@ export const ListGastos = () => {
       )}
       <div className="overflow-x-auto">
         <table className="table-auto w-full text-sm text-left text-gray-400">
-          <thead className="text-xs uppercase bg-gray-800 text-gray-300">
-            <tr>
+          <thead className="text-xs uppercase bg-black text-gray-300">
+            <tr className="border-2 border-gray-600">
               <th className="px-6 py-3">ID</th>
               <th className="px-6 py-3">Monto</th>
               <th className="px-6 py-3">Descripción</th>
@@ -73,7 +73,7 @@ export const ListGastos = () => {
             {gastosPrime.map((gasto: Gasto) => (
               <tr
                 key={gasto.id}
-                className="border-b bg-gray-700 border-gray-600 hover:bg-gray-600"
+                className="border-2 bg-black border-gray-600 hover:bg-gray-600"
               >
                 <td className="px-6 py-4">{gasto.id}</td>
                 <td className="px-6 py-4">{gasto.monto.toLocaleString("es-CO")} COP</td>
