@@ -3,11 +3,12 @@ import { useState} from "react";
 import { Producto } from "@prisma/client";
 
 export const FormProductos = () => {
-    const [productos, setProductos] = useState<Pick<Producto, "nombre" | "precio" | "costo" | "stock" | "urlImagen">>({
+    const [productos, setProductos] = useState<Pick<Producto, "nombre" | "precio" | "costo" | "stock" | "urlImagen" | "descontinuo">>({
         nombre: '',
         precio: 0,
         costo: 0,
         stock: 0,
+        descontinuo: false,
         urlImagen: ''
     });    
     const [message, setMessage] = useState<string | number>("");
@@ -49,6 +50,7 @@ export const FormProductos = () => {
                 precio: 0,
                 costo: 0,
                 stock: 0,
+                descontinuo: false,
                 urlImagen: ''
             })
 
@@ -121,6 +123,20 @@ export const FormProductos = () => {
                         name="urlImagen" 
                         id="urlImagen" 
                         className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                    />
+                </div>
+                <div>
+                    <label htmlFor="descripcion" className="block text-sm font-medium text-gray-300">
+                        Descontinuo
+                    </label>
+                    <input
+                        type="text" 
+                        value={productos.descontinuo.toString()} 
+                        onChange={(e) => change(e)} 
+                        placeholder="Descripción del Producto" 
+                        name="descontinuo" 
+                        id="descontinuo" 
+                        className="w-full px-4 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white" 
                     />
                 </div>
                 <button 

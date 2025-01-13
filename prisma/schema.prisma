@@ -15,6 +15,7 @@ model Producto {
   stock      Int
   urlImagen  String
   Ventas     Venta[]  @relation("ProductoVentas")
+  descontinuo Boolean
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }

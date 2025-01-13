@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { nombre, precio, costo, stock, urlImagen } = body;
+        const { nombre, precio, costo, stock, urlImagen, descontinuo } = body;
         
         if (!nombre || !precio || !costo || !stock || !urlImagen) {
             return NextResponse.json({ error: "Todos los campos son obligatorios" }, { status: 400 });
@@ -16,6 +16,7 @@ export async function POST(request: Request) {
                 precio: parseFloat(precio),
                 costo: parseFloat(costo),
                 stock: parseInt(stock),
+                descontinuo : Boolean(descontinuo),
                 urlImagen
             }
         })
