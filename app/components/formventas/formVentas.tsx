@@ -120,7 +120,7 @@ export const FormVentas = () => {
             id="producto"
             value={selectedProductoId}
             onChange={handleProductoChange}
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full px-4 py-2 border text-white bg-gray-900 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="">Selecciona un producto</option>
             {productos.map((producto) => (
@@ -142,7 +142,7 @@ export const FormVentas = () => {
             value={cantidad}
             onChange={handleCantidadChange}
             placeholder="Cantidad Vendida"
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full px-4 py-2 border text-white bg-gray-900 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
 
@@ -156,7 +156,7 @@ export const FormVentas = () => {
             id="monto"
             value={monto}
             readOnly
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 focus:outline-none"
+            className="mt-1 block w-full px-4 py-2 border text-white bg-gray-900 border-gray-300 rounded-md shadow-sm focus:outline-none"
           />
         </div>
 
@@ -169,7 +169,7 @@ export const FormVentas = () => {
             id="ganancia"
             value={ganancia}
             readOnly
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 focus:outline-none"
+            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm text-white bg-gray-900 focus:outline-none"
           />
         </div>
       </div>

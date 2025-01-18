@@ -7,9 +7,10 @@ import Image from "next/image";
 
 export const ProductsList = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
-  const { productos: datos} = useDatos();
+  const { productos: datos } = useDatos();
   const [message, setMessage] = useState<string | number>("");
   const [error, setError] = useState<boolean | null>(null);
+
   useEffect(() => {
     setProductos(datos);
   }, [datos]);
@@ -27,18 +28,45 @@ export const ProductsList = () => {
       setError(false);
       setMessage("Producto eliminado exitosamente");
       setTimeout(() => {
-        setMessage("")
+        setMessage("");
       }, 3000);
-      setProductos((prev) => prev.filter((prod) => prod.id !== id))
-      
+      setProductos((prev) => prev.filter((prod) => prod.id !== id));
     } catch (error) {
       setError(true);
       setMessage(
         error instanceof Error ? error.message : "Error al registrar producto"
       );
       setTimeout(() => {
-        setMessage("")
-      }, 3000)
+        setMessage("");
+      }, 3000);
+    }
+  };
+
+  const handleContinuar = async (id: string) => {
+    try {
+      const response = await fetch(`/api/updateproduct/${id}`, {
+        method: "PUT",
+        body: JSON.stringify({ descontinuo: true }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al continuar el producto");
+      }
+
+      setError(false);
+      setMessage("Producto continuado exitosamente");
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+      setProductos((prev) => prev.filter((prod) => prod.id !== id));
+    } catch (error) {
+      setError(true);
+      setMessage(
+        error instanceof Error ? error.message : "Error al continuar producto"
+      );
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
     }
   };
 
@@ -54,104 +82,124 @@ export const ProductsList = () => {
         </div>
       )}
       <div className="space-y-8">
-        {productos.filter((prod) => Boolean(prod.descontinuo) === false).map((producto: Producto) => {
-          return (
-            <div
-              key={producto.id}
-              className="p-4 shadow-md rounded-md overflow-auto"
-            >
-              <h2 className="text-xl font-semibold text-black mb-4">
-                {producto.nombre}
-              </h2>
-              <table className="w- text-sm text-left text-black border border-gray-700 mb-4">
-                <thead className="bg-[#EE7890] text-gray-300 uppercase text-xs">
-                  <tr>
-                    <th className="px-4 py-5 text-center text-black border-2 border-black">ID</th>
-                    <th className="px-4 py-5 text-center text-black border-2 border-black">Nombre</th>
-                    <th className="px-4 py-5 text-center text-black border-2 border-black">Precio</th>
-                    <th className="px-4 py-5 text-center text-black border-2 border-black">Costo</th>
-                    <th className="px-4 py-5 text-center text-black border-2 border-black">Stock</th>
-                    <th className="px-4 py-5 text-center text-black border-2 border-black">Descontinuo</th>
-                    <th className="px-4 py-5 text-center text-black border-2 border-black">Fecha Creada</th>
-                    <th className="px-4 py-5 text-center text-black border-2 border-black">Fecha Modificada</th>
-
-                    <th className="px-4 py-2 border-2 text-black border-black">
-                      URL Imagen
-                    </th>
-                    <th className="px-4 py-2 border-2 text-black border-black">
-                      Ver Ventas
-                    </th>
-                    <th className="px-4 py-2 border-2 text-black border-black">Editar</th>
-                    <th className="px-4 py-2 border-2 text-black border-black">
-                      Eliminar
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="overflow-auto">
-                  <tr>
-                    <td className="px-4 py-2 border-2 border-black">
-                      {producto.id}
-                    </td>
-                    <td className="px-4 py-2 border-2 border-black">
-                      {producto.nombre}
-                    </td>
-                    <td className="px-4 py-2 border-2 border-black">
-                      {producto.precio.toLocaleString("es-co")} COP
-                    </td>
-                    <td className="px-4 py-2 border-2 border-black">
-                      {producto.costo.toLocaleString("es-co")} COP
-                    </td>
-                    <td className="px-4 py-2 border-2 border-black">
-                      {producto.stock}
-                    </td>
-                    <td>
-                      {Boolean(producto.descontinuo) ? "Si" : "No"}
-                    </td>
-                    <td className="px-4 py-2 border-2 border-black">
-                      {new Date(producto.createdAt).toLocaleDateString()}
-                    </td>
-                    <td className="px-4 py-2 border-2 border-black">
-                      {new Date(producto.updatedAt).toLocaleDateString()}
-                    </td>
-                    <td className="w-24 h-24 px-4 py-2 border-2 border-black overflow-auto">
-                      <Image
-                        width={100}
-                        height={100}
-                        src={producto.urlImagen}
-                        alt={producto.nombre}
-                        className="w-24 h-24 object-cover"
-                      />
-                    </td>
-                    <td className="px-4 py-2 border-2 border-black">
-                      <Link
-                        href={`/itemVentas/${producto.id}`}
-                        className="text-blue-400 hover:underline"
-                      >
+        {productos
+          .filter((prod) => Boolean(prod.descontinuo) === false)
+          .map((producto: Producto) => {
+            return (
+              <div
+                key={producto.id}
+                className="p-4 shadow-md rounded-md overflow-auto"
+              >
+                <h2 className="text-xl font-semibold text-white mb-4">
+                  {producto.nombre}
+                </h2>
+                <table className="w-full text-sm text-left text-white border border-white mb-4">
+                  <thead className="bg-[#EE7890] text-gray-300 uppercase text-xs">
+                    <tr>
+                      <th className="px-4 py-5 text-center text-white border-2 border-white">
+                        Nombre
+                      </th>
+                      <th className="px-4 py-5 text-center text-white border-2 border-white">
+                        Precio
+                      </th>
+                      <th className="px-4 py-5 text-center text-white border-2 border-white">
+                        Costo
+                      </th>
+                      <th className="px-4 py-5 text-center text-white border-2 border-white">
+                        Stock
+                      </th>
+                      <th className="px-4 py-5 text-center text-white border-2 border-white">
+                        Descontinuo
+                      </th>
+                      <th className="px-4 py-5 text-center text-white border-2 border-white">
+                        Fecha Creada
+                      </th>
+                      <th className="px-4 py-5 text-center text-white border-2 border-white">
+                        Fecha Modificada
+                      </th>
+                      <th className="px-4 py-2 border-2 text-white border-white">
+                        URL Imagen
+                      </th>
+                      <th className="px-4 py-2 border-2 text-white border-white">
                         Ver Ventas
-                      </Link>
-                    </td>
-                    <td className="px-4 py-2 border-2 border-black">
-                      <Link
-                        href={`/editarProducto/${producto.id}`}
-                        className="text-yellow-400 hover:underline"
-                      >
+                      </th>
+                      <th className="px-4 py-2 border-2 text-white border-white">
                         Editar
-                      </Link>
-                    </td>
-                    <td className="px-4 py-2 border-2 border-black">
-                      <button
-                        onClick={() => handleDelete(producto.id)}
-                        className="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded-md"
-                      >
+                      </th>
+                      <th className="px-4 py-2 border-2 text-white border-white">
                         Eliminar
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          );
-        })}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="overflow-auto">
+                    <tr>
+                      <td className="px-4 py-2 border-2 border-white">
+                        {producto.nombre}
+                      </td>
+                      <td className="px-4 py-2 border-2 border-white">
+                        {producto.precio.toLocaleString("es-co")} COP
+                      </td>
+                      <td className="px-4 py-2 border-2 border-white">
+                        {producto.costo.toLocaleString("es-co")} COP
+                      </td>
+                      <td className="px-4 py-2 border-2 border-white">
+                        {producto.stock}
+                      </td>
+                      <td className="px-4 py-2 border-2 border-white">
+                        <label>
+                          {Boolean(producto.descontinuo)
+                            ? "Descontinuado"
+                            : "Activo"}
+                        </label>{" "}
+                        <button className="p-2 bg-[#EE7890] hover:bg-[#EE7890]/80" onClick={() => handleContinuar(producto.id)}>
+                          descontinuar
+                        </button>
+                      </td>
+                      <td className="px-4 py-2 border-2 border-white">
+                        {new Date(producto.createdAt).toLocaleDateString()}
+                      </td>
+                      <td className="px-4 py-2 border-2 border-white">
+                        {new Date(producto.updatedAt).toLocaleDateString()}
+                      </td>
+                      <td className="w-24 h-24 px-4 py-2 border-2 border-white overflow-auto">
+                        <Image
+                          width={100}
+                          height={100}
+                          src={producto.urlImagen}
+                          alt={producto.nombre}
+                          className="w-24 h-24 object-cover"
+                        />
+                      </td>
+                      <td className="px-4 py-2 border-2 border-white">
+                        <Link
+                          href={`/itemVentas/${producto.id}`}
+                          className="text-blue-400 hover:underline"
+                        >
+                          Ver Ventas
+                        </Link>
+                      </td>
+                      <td className="px-4 py-2 border-2 border-white">
+                        <Link
+                          href={`/editarProducto/${producto.id}`}
+                          className="text-yellow-400 hover:underline"
+                        >
+                          Editar
+                        </Link>
+                      </td>
+                      <td className="px-4 py-2 border-2 border-white">
+                        <button
+                          onClick={() => handleDelete(producto.id)}
+                          className="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded-md"
+                        >
+                          Eliminar
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            );
+          })}
       </div>
     </div>
   );

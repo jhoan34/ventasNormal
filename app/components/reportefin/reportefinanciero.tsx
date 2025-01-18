@@ -43,52 +43,52 @@ export const ReporteFinanciero = () => {
     const gastoMasAltoDescripcion = gastos.find((g) => g.monto === gastoMasAlto)?.descripcion || "No disponible";
 
     return (
-        <div className="p-6 w-[90%] min-h-screen bg-white">
+        <div className="p-6 w-[90%] min-h-screen">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                <div className="p-4 bg-[#EE7890] text-black rounded-md shadow-md">
+                <div className="p-4 bg-[#EE7890] text-white rounded-md shadow-md">
                     <h2 className="text-xl font-semibold mb-2">Total Ingresos</h2>
                     <p className="text-2xl font-bold">{totalIngresos.toLocaleString("es-CO")} COP</p>
                 </div>
-                <div className="p-4 bg-[#EE7890] text-black rounded-md shadow-md">
+                <div className="p-4 bg-[#EE7890] text-white rounded-md shadow-md">
                     <h2 className="text-xl font-semibold mb-2">Total Gastos</h2>
                     <p className="text-2xl font-bold">{totalGastos.toLocaleString("es-CO")} COP</p>
                 </div>
-                <div className={`p-4 text-black ${gananciasNetas >= 0 ? "bg-[#EE7890]" : "bg-red-800"} rounded-md shadow-md`}>
+                <div className={`p-4 text-white ${gananciasNetas >= 0 ? "bg-[#EE7890]" : "bg-red-800"} rounded-md shadow-md`}>
                     <h2 className="text-xl font-semibold mb-2">Ganancias Netas</h2>
                     <p className="text-2xl font-bold">{gananciasNetas.toLocaleString("es-CO")} COP</p>
                 </div>
-                <div className="p-4 bg-[#EE7890] text-black rounded-md shadow-md">
+                <div className="p-4 bg-[#EE7890] text-white rounded-md shadow-md">
                     <h2 className="text-xl font-semibold mb-2">Producto Más Vendido</h2>
                     <p className="text-lg">{productoMasVendidoNombre}</p>
                 </div>
-                <div className="p-4 bg-[#EE7890] text-black rounded-md shadow-md">
+                <div className="p-4 bg-[#EE7890] text-white rounded-md shadow-md">
                     <h2 className="text-xl font-semibold mb-2">Gasto Más Alto</h2>
                     <p className="text-lg">{gastoMasAltoDescripcion}</p>
                     <p className="text-2xl font-bold">{gastoMasAlto.toLocaleString("es-CO")} COP</p>
                 </div>
             </div>
 
-            <div className="p-6 rounded-md shadow-md mb-8 text-black ">
+            <div className="p-6 rounded-md shadow-md mb-8 text-white">
                 <h2 className="text-2xl font-semibold mb-4">Detalles de Ventas</h2>
                 <div className="overflow-x-auto">
-                    <table className="table-auto w-full text-left text-sm">
-                        <thead className="bg-[#EE7890]">
+                    <table className="table-auto w-full text-left text-sm text-white border border-white">
+                        <thead className="bg-[#EE7890] text-white">
                             <tr>
-                                <th className="px-5 py-4 border-2 border-black">ID</th>
-                                <th className="px-5 py-4 border-2 border-black">Producto</th>
-                                <th className="px-5 py-4 border-2 border-black">Cantidad</th>
-                                <th className="px-5 py-4 border-2 border-black">Monto</th>
+                                <th className="px-5 py-4 border-2 border-white">ID</th>
+                                <th className="px-5 py-4 border-2 border-white">Producto</th>
+                                <th className="px-5 py-4 border-2 border-white">Cantidad</th>
+                                <th className="px-5 py-4 border-2 border-white">Monto</th>
                             </tr>
                         </thead>
                         <tbody>
                             {ventas.map((venta) => (
                                 <tr key={venta.id}>
-                                    <td className="px-5 border-2 border-black py-2">{venta.id}</td>
-                                    <td className="px-5 border-2 border-black py-2">
+                                    <td className="px-5 border-2 border-white py-2">{venta.id}</td>
+                                    <td className="px-5 border-2 border-white py-2">
                                         {productos.find((p) => p.id === venta.productoId)?.nombre || "No disponible"}
                                     </td>
-                                    <td className="px-5 border-2 border-black py-2">{venta.cantidad}</td>
-                                    <td className="px-5 border-2 border-black py-2">{venta.monto.toLocaleString("es-CO")} COP</td>
+                                    <td className="px-5 border-2 border-white py-2">{venta.cantidad}</td>
+                                    <td className="px-5 border-2 border-white py-2">{venta.monto.toLocaleString("es-CO")} COP</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -96,23 +96,23 @@ export const ReporteFinanciero = () => {
                 </div>
             </div>
 
-            <div className="p-6 rounded-md shadow-md text-black">
+            <div className="p-6 rounded-md shadow-md text-white">
                 <h2 className="text-2xl font-semibold mb-4">Detalles de Gastos</h2>
                 <div className="overflow-x-auto">
-                    <table className="table-auto w-full text-left text-sm">
-                        <thead className="bg-[#EE7890]">
+                    <table className="table-auto w-full text-left text-sm text-white border border-white">
+                        <thead className="bg-[#EE7890] text-white">
                             <tr>
-                                <th className="px-4 py-2 border-2 border-black">ID</th>
-                                <th className="px-4 py-2 border-2 border-black">Descripción</th>
-                                <th className="px-4 py-2 border-2 border-black">Monto</th>
+                                <th className="px-4 py-2 border-2 border-white">ID</th>
+                                <th className="px-4 py-2 border-2 border-white">Descripción</th>
+                                <th className="px-4 py-2 border-2 border-white">Monto</th>
                             </tr>
                         </thead>
                         <tbody>
                             {gastos.map((gasto) => (
                                 <tr key={gasto.id}>
-                                    <td className="px-4 border-2 border-black py-2">{gasto.id}</td>
-                                    <td className="px-4 border-2 border-black py-2">{gasto.descripcion}</td>
-                                    <td className="px-4 border-2 border-black py-2">-{gasto.monto.toLocaleString("es-CO")} COP</td>
+                                    <td className="px-4 border-2 border-white py-2">{gasto.id}</td>
+                                    <td className="px-4 border-2 border-white py-2">{gasto.descripcion}</td>
+                                    <td className="px-4 border-2 border-white py-2">-{gasto.monto.toLocaleString("es-CO")} COP</td>
                                 </tr>
                             ))}
                         </tbody>

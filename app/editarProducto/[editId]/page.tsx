@@ -156,20 +156,6 @@ export default function ItemVentas() {
                         className="w-full px-4 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white" 
                     />
                 </div>
-                <div>
-                    <label htmlFor="descripcion" className="block text-sm font-medium text-gray-300">
-                        Descontinuo
-                    </label>
-                    <input
-                        type="text" 
-                        value={productos.descontinuo.toString()} 
-                        onChange={(e) => change(e)} 
-                        placeholder="Descripción del Producto" 
-                        name="descontinuo" 
-                        id="descontinuo" 
-                        className="w-full px-4 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white" 
-                    />
-                </div>
                 <button 
                     type="submit" 
                     className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"

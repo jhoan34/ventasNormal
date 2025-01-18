@@ -60,7 +60,7 @@ export const FormGastos = () => {
                         name="monto" 
                         value={gasto.monto} 
                         onChange={change} 
-                        className="mt-1 block w-full px-4 py-2 border text-black border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="mt-1 block w-full px-4 py-2 border text-white bg-gray-900 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required 
                     />
                 </div>
@@ -72,7 +72,7 @@ export const FormGastos = () => {
                         name="descripcion" 
                         value={gasto.descripcion} 
                         onChange={change} 
-                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="mt-1 block w-full px-4 py-2 border text-white bg-gray-900 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required 
                     />
                 </div>

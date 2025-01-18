@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Gasto } from "@prisma/client";
 import { useDatos } from "@/context/usedatos";
 
-
 export const ListGastos = () => {
   const [gastosPrime, setGastoPrime] = useState<Gasto[]>([]);
   const [message, setMessage] = useState<string | number>("");
@@ -22,7 +21,7 @@ export const ListGastos = () => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-        }
+        },
       });
       const data = await response.json();
 
@@ -33,21 +32,21 @@ export const ListGastos = () => {
       setErr(false);
       setMessage(data.message);
       setTimeout(() => {
-        setMessage("")
+        setMessage("");
       }, 3000);
       setGastoPrime((prev) => prev.filter((gasto) => gasto.id !== id));
     } catch (error) {
       setErr(true);
       setMessage(error instanceof Error ? error.message : "Error desconocido");
       setTimeout(() => {
-        setMessage("")
+        setMessage("");
       }, 3000);
     }
   };
 
   return (
     <div className="min-h-screen w-full p-20">
-      <h1 className="text-2xl text-black font-bold mb-6">Lista de Gastos</h1>
+      <h1 className="text-2xl text-white font-bold mb-6">Lista de Gastos</h1>
       {message && (
         <div
           className={`${
@@ -58,29 +57,30 @@ export const ListGastos = () => {
         </div>
       )}
       <div className="overflow-x-auto">
-        <table className="table-auto w-full text-sm text-left text-black border border-black">
-          <thead className="text-xs uppercase bg-[#EE7890] text-black">
-            <tr className="border-2 border-black">
-              <th className="px-6 py-3 border border-black">ID</th>
-              <th className="px-6 py-3 border border-black">Monto</th>
-              <th className="px-6 py-3 border border-black">Descripción</th>
-              <th className="px-6 py-3 border border-black">Fecha Creada</th>
-              <th className="px-6 py-3 border border-black">Fecha Modificada</th>
-              <th className="px-6 py-3 border border-black ">Acciones</th>
+        <table className="table-auto w-full text-sm text-left text-white border border-white">
+          <thead className="text-xs uppercase bg-[#EE7890] text-white">
+            <tr className="border-2 border-white">
+              <th className="px-6 py-3 border border-white">Monto</th>
+              <th className="px-6 py-3 border border-white">Descripción</th>
+              <th className="px-6 py-3 border border-white">Fecha Creada</th>
+              <th className="px-6 py-3 border border-white">Fecha Modificada</th>
+              <th className="px-6 py-3 border border-white">Acciones</th>
             </tr>
           </thead>
           <tbody>
             {gastosPrime.map((gasto: Gasto) => (
-              <tr
-                key={gasto.id}
-                className="border-2 border-black"
-              >
-                <td className="px-6 py-4 border border-black ">{gasto.id}</td>
-                <td className="px-6 py-4 border border-black ">{gasto.monto.toLocaleString("es-CO")} COP</td>
-                <td className="px-6 py-4 border border-black ">{gasto.descripcion}</td>
-                <th className="px-6 py-4 border border-black ">{new Date(gasto.createdAt).toLocaleDateString() }</th>
-                <th className="px-6 py-4 border border-black ">{new Date(gasto.updatedAt).toLocaleDateString()}</th>
-                <td className="px-6 py-4 border border-black ">
+              <tr key={gasto.id} className="border-2 border-white">
+                <td className="px-6 py-4 border border-white">
+                  {gasto.monto.toLocaleString("es-CO")} COP
+                </td>
+                <td className="px-6 py-4 border border-white">{gasto.descripcion}</td>
+                <td className="px-6 py-4 border border-white">
+                  {new Date(gasto.createdAt).toLocaleDateString()}
+                </td>
+                <td className="px-6 py-4 border border-white">
+                  {new Date(gasto.updatedAt).toLocaleDateString()}
+                </td>
+                <td className="px-6 py-4 border border-white">
                   <button
                     onClick={() => handleDelete(gasto.id)}
                     className="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded-md"

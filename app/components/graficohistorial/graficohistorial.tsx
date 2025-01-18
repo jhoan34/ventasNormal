@@ -66,9 +66,7 @@ export function Graficohistorial() {
     }),
     { ganancia: 0, cantidad: 0, monto: 0 }
   );
-  
-  console.log("Total Ventas:", totalVentas);
-  console.log("Total Gastos:", totalGastos);
+
   
   // Generar datos para la gráfica
   const chartData = meses.slice(0, -1 ).map((mes) => ({
@@ -77,11 +75,11 @@ export function Graficohistorial() {
     mobile: totalGastos || 0,          // Total de gastos
   }));
   
-  console.log("Chart Data:", chartData);
+
 
 
   return (
-    <Card className="w-full h-full">
+    <Card className="w-full h-full bg-gray-950">
       <CardHeader>
         <CardTitle>Area Chart - Stacked</CardTitle>
         <CardDescription>

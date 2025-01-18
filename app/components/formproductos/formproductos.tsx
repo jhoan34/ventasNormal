@@ -74,7 +74,7 @@ export const FormProductos = () => {
                         placeholder="Nombre del Producto" 
                         name="nombre" 
                         id="nombre" 
-                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                        className="mt-1 block w-full px-4 py-2 border text-white bg-gray-900 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                     />
                 </div>
                 <div>
@@ -86,7 +86,7 @@ export const FormProductos = () => {
                         placeholder="Precio del Producto" 
                         name="precio" 
                         id="precio" 
-                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                        className="mt-1 block w-full px-4 py-2 border text-white bg-gray-900 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                     />
                 </div>
                 <div>
@@ -98,7 +98,7 @@ export const FormProductos = () => {
                         placeholder="Costo del Producto" 
                         name="costo" 
                         id="costo" 
-                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                        className="mt-1 block w-full px-4 py-2 border text-white bg-gray-900 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                     />
                 </div>
                 <div>
@@ -110,7 +110,7 @@ export const FormProductos = () => {
                         placeholder="Stock del Producto" 
                         name="stock" 
                         id="stock" 
-                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                        className="mt-1 block w-full px-4 py-2 border text-white bg-gray-900 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                     />
                 </div>
                 <div>
@@ -122,21 +122,7 @@ export const FormProductos = () => {
                         placeholder="URL de la Imagen" 
                         name="urlImagen" 
                         id="urlImagen" 
-                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
-                    />
-                </div>
-                <div>
-                    <label htmlFor="descripcion" className="block text-sm font-medium text-gray-300">
-                        Descontinuo
-                    </label>
-                    <input
-                        type="text" 
-                        value={productos.descontinuo.toString()} 
-                        onChange={(e) => change(e)} 
-                        placeholder="Descripción del Producto" 
-                        name="descontinuo" 
-                        id="descontinuo" 
-                        className="w-full px-4 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white" 
+                        className="mt-1 block w-full px-4 py-2 border text-white bg-gray-900 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                     />
                 </div>
                 <button 
