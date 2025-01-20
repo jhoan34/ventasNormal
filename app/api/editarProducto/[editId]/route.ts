@@ -7,10 +7,6 @@ export async function POST(request: Request) {
         const Url = new URL(request.url).pathname.split("/").pop();
         const { nombre, precio, costo, stock, urlImagen, descontinuo } = body;
 
-        if (!nombre || !precio || !costo || !stock || !urlImagen || !descontinuo) {
-            return NextResponse.json({ error: "Todos los campos son obligatorios" }, { status: 400 });
-        }
-
         const producto = await db.producto.update({
             where: { id: Url },
             data: {
