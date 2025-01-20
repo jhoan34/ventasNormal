@@ -1,6 +1,6 @@
 "use client"
 import { Producto } from "@prisma/client";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname,} from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDatos } from "@/context/usedatos";
 
@@ -18,7 +18,6 @@ export default function ItemVentas() {
     const [err, setErr] = useState(false);
     const [editId, setEditId] = useState<string>("");
     const { productos: data } = useDatos();
-    const router = useRouter();
     const pathname = usePathname();
 
     useEffect(() => {
@@ -76,7 +75,7 @@ export default function ItemVentas() {
 
             setErr(false);
             setMessage(data.message);
-            router.push("/");
+            window.location.href = "/";
         } catch (error) {
             setErr(true);
             setMessage(error instanceof Error ? error.message : "Error al registrar producto");

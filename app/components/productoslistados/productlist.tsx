@@ -3,7 +3,6 @@ import { useDatos } from "@/context/usedatos";
 import { useState, useEffect } from "react";
 import { Producto } from "@prisma/client";
 import Link from "next/link";
-import Image from "next/image";
 
 export const ProductsList = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
@@ -93,11 +92,14 @@ export const ProductsList = () => {
                 <h2 className="text-xl font-semibold text-white mb-4">
                   {producto.nombre}
                 </h2>
-                <table className="w-full text-sm text-left text-white border border-white mb-4">
+                <table className="w-full text-sm text-left text-white border border-white mb-4 table-auto">
                   <thead className="bg-[#EE7890] text-gray-300 uppercase text-xs">
                     <tr>
                       <th className="px-4 py-5 text-center text-white border-2 border-white">
                         Nombre
+                      </th>
+                      <th className="px-4 py-2 border-2 text-white border-white">
+                        URL Imagen
                       </th>
                       <th className="px-4 py-5 text-center text-white border-2 border-white">
                         Precio
@@ -118,9 +120,6 @@ export const ProductsList = () => {
                         Fecha Modificada
                       </th>
                       <th className="px-4 py-2 border-2 text-white border-white">
-                        URL Imagen
-                      </th>
-                      <th className="px-4 py-2 border-2 text-white border-white">
                         Ver Ventas
                       </th>
                       <th className="px-4 py-2 border-2 text-white border-white">
@@ -136,6 +135,15 @@ export const ProductsList = () => {
                       <td className="px-4 py-2 border-2 border-white">
                         {producto.nombre}
                       </td>
+                      <td className="min-w-[200px] h-36 px-4 py-2 border-2 border-white overflow-auto">
+                        <img
+                          src={producto.urlImagen}
+                          alt={producto.nombre}
+                          className="w-full h-36 object-cover"
+                        />
+                      </td>
+
+
                       <td className="px-4 py-2 border-2 border-white">
                         {producto.precio.toLocaleString("es-co")} COP
                       </td>
@@ -160,15 +168,6 @@ export const ProductsList = () => {
                       </td>
                       <td className="px-4 py-2 border-2 border-white">
                         {new Date(producto.updatedAt).toLocaleDateString()}
-                      </td>
-                      <td className="w-24 h-24 px-4 py-2 border-2 border-white overflow-auto">
-                        <Image
-                          width={100}
-                          height={100}
-                          src={producto.urlImagen}
-                          alt={producto.nombre}
-                          className="w-24 h-24 object-cover"
-                        />
                       </td>
                       <td className="px-4 py-2 border-2 border-white">
                         <Link

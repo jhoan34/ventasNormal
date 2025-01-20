@@ -17,7 +17,6 @@ export const ReporteFinanciero = () => {
         }
     }, [datosProductos, datosGastos, datosVentas]);
 
-    // Calcular totales
     const totalIngresos = ventas.reduce((sum, venta) => sum + venta.monto, 0);
     const totalGastos = gastos.reduce((sum, gasto) => sum + gasto.monto, 0);
     const totalCostos = ventas.reduce((sum, venta) => {
@@ -26,7 +25,6 @@ export const ReporteFinanciero = () => {
     }, 0);
     const gananciasNetas = totalIngresos - totalCostos - totalGastos;
 
-    // Producto más vendido
     const productoMasVendido = ventas.reduce((acc, venta) => {
         acc[venta.productoId] = (acc[venta.productoId] || 0) + venta.cantidad;
         return acc;
@@ -38,7 +36,6 @@ export const ReporteFinanciero = () => {
 
     const productoMasVendidoNombre = productos.find((p) => p.id === masVendidoId)?.nombre || "No disponible";
 
-    // Gasto más alto
     const gastoMasAlto = gastos.reduce((max, gasto) => (gasto.monto > max ? gasto.monto : max), 0);
     const gastoMasAltoDescripcion = gastos.find((g) => g.monto === gastoMasAlto)?.descripcion || "No disponible";
 
@@ -74,21 +71,21 @@ export const ReporteFinanciero = () => {
                     <table className="table-auto w-full text-left text-sm text-white border border-white">
                         <thead className="bg-[#EE7890] text-white">
                             <tr>
-                                <th className="px-5 py-4 border-2 border-white">ID</th>
-                                <th className="px-5 py-4 border-2 border-white">Producto</th>
-                                <th className="px-5 py-4 border-2 border-white">Cantidad</th>
-                                <th className="px-5 py-4 border-2 border-white">Monto</th>
+                                <th className="px-4 py-2 border-2 border-white">Producto</th>
+                                <th className="px-4 py-2 border-2 border-white">Cantidad</th>
+                                <th className="px-4 py-2 border-2 border-white">Monto</th>
+                                <th className="px-4 py-2 border-2 border-white">Fecha</th>
                             </tr>
                         </thead>
                         <tbody>
                             {ventas.map((venta) => (
                                 <tr key={venta.id}>
-                                    <td className="px-5 border-2 border-white py-2">{venta.id}</td>
-                                    <td className="px-5 border-2 border-white py-2">
+                                    <td className="px-4 py-2 border-2 border-white">
                                         {productos.find((p) => p.id === venta.productoId)?.nombre || "No disponible"}
                                     </td>
-                                    <td className="px-5 border-2 border-white py-2">{venta.cantidad}</td>
-                                    <td className="px-5 border-2 border-white py-2">{venta.monto.toLocaleString("es-CO")} COP</td>
+                                    <td className="px-4 py-2 border-2 border-white">{venta.cantidad}</td>
+                                    <td className="px-4 py-2 border-2 border-white">{venta.monto.toLocaleString("es-CO")} COP</td>
+                                    <td className="px-4 py-2 border-2 border-white">{new Date(venta.createdAt).toLocaleDateString("es-CO")}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -102,17 +99,17 @@ export const ReporteFinanciero = () => {
                     <table className="table-auto w-full text-left text-sm text-white border border-white">
                         <thead className="bg-[#EE7890] text-white">
                             <tr>
-                                <th className="px-4 py-2 border-2 border-white">ID</th>
                                 <th className="px-4 py-2 border-2 border-white">Descripción</th>
                                 <th className="px-4 py-2 border-2 border-white">Monto</th>
+                                <th className="px-4 py-2 border-2 border-white">Fecha</th>
                             </tr>
                         </thead>
                         <tbody>
                             {gastos.map((gasto) => (
                                 <tr key={gasto.id}>
-                                    <td className="px-4 border-2 border-white py-2">{gasto.id}</td>
-                                    <td className="px-4 border-2 border-white py-2">{gasto.descripcion}</td>
-                                    <td className="px-4 border-2 border-white py-2">-{gasto.monto.toLocaleString("es-CO")} COP</td>
+                                    <td className="px-4 py-2 border-2 border-white">{gasto.descripcion}</td>
+                                    <td className="px-4 py-2 border-2 border-white">-{gasto.monto.toLocaleString("es-CO")} COP</td>
+                                    <td className="px-4 py-2 border-2 border-white">{new Date(gasto.createdAt).toLocaleDateString("es-CO")}</td>
                                 </tr>
                             ))}
                         </tbody>
