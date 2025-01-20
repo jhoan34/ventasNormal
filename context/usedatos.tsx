@@ -1,6 +1,7 @@
 "use client";
 import React, { createContext, useContext, ReactNode, useState, useEffect } from "react";
 import { Producto, Gasto, Venta } from "@prisma/client";
+import { getDb } from "./db";
 
 interface DatosContextValue {
     productos: Producto[];
@@ -22,13 +23,8 @@ export const DatosProvider: React.FC<DatosProviderProps> = ({ children }) => {
     useEffect(() => {
         const fetchDatos = async () => {
             try {
-                const response = await fetch("/api/getdatos");
-                const data = await response.json();
-                if (!response.ok) {
-                    throw new Error(data.error || "Error al obtener datos");
-                }
-                setDatos(data);
-                console.log(data);
+                const response = await getDb();
+                setDatos(response);
             } catch (error) {
                 setError(error instanceof Error ? error.message : "Error desconocido");
             } finally {

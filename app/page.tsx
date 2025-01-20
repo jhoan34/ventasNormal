@@ -28,7 +28,7 @@ export default function Home() {
 
         <div id="finanzas" className="text-center bg-[#EE7890] p-8 rounded-lg shadow-sm border-2 border-black">
           <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b-4 border-pink-500 inline-block">
-            Finanzas
+            Gastos
           </h2>
           <FormGastos />
         </div>

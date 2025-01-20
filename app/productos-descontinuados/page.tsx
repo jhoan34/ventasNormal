@@ -5,11 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+
 export default function ProductosDescontinuados() {
   const { productos: datos } = useDatos();
   const [productos, setProductos] = useState<Producto[]>([]);
   const [message, setMessage] = useState<string | number>("");
   const [error, setError] = useState<boolean | null>(null);
+
 
   useEffect(() => {
     if (datos) {
