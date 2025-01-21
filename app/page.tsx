@@ -6,6 +6,9 @@ import { Graficohistorial } from "./components/graficohistorial/graficohistorial
 import { ListGastos } from "./components/listgastos/listgastos";
 import { ProductsList } from "./components/productoslistados/productlist";
 import { ReporteFinanciero } from "./components/reportefin/reportefinanciero";
+import { HistorialVentas } from "./components/historialVentas/historialVentas";
+import { HistorialFinan } from "./components/historialFinan/historialFinan";
+import { GeneratePdf } from "@/lib/pdf";
 
 export default function Home() {
   return (
@@ -44,6 +47,14 @@ export default function Home() {
         <ProductsList />
       </section>
 
+      {/* Ventas */}
+      <section className="w-[90%] p-8 bg-gray-950 rounded-lg shadow-lg flex flex-col items-center">
+        <h2 className="text-2xl font-bold text-white mb-6 text-center border-b-4 border-pink-500 inline-block">
+          Ventas
+        </h2>
+        <HistorialVentas />
+      </section>
+
       {/* Gastos */}
       <section className="w-[90%] p-8 bg-gray-950 rounded-lg shadow-lg flex flex-col items-center">
         <h2 className="text-2xl font-bold text-white mb-6 text-center border-b-4 border-pink-500 inline-block">
@@ -58,6 +69,14 @@ export default function Home() {
           Reporte Financiero
         </h2>
         <ReporteFinanciero />
+      </section>
+      
+      <section className="relative w-[90%] p-16 bg-gray-950 rounded-lg shadow-lg flex flex-col items-center">
+        <GeneratePdf/>
+        <h2 className="text-2xl font-bold text-white mb-6 text-center border-b-4 border-pink-500 inline-block">
+          Historial de reporte_financiero
+        </h2>
+        <HistorialFinan />
       </section>
 
       {/* Historial Gráfico */}

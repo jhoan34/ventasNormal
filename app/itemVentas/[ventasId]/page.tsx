@@ -41,6 +41,9 @@ export default function ItemVentas() {
             setError(false);
             setMessage(data.message);
             setRelatedVentas((prevVentas) => prevVentas.filter((venta) => venta.id !== id));
+            setTimeout(() => {
+                window.location.href = "/";
+            }, 1000)
         } catch (error) {
             setError(true);
             setMessage(error instanceof Error ? error.message : "Error desconocido al eliminar la venta");

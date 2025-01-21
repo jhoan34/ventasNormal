@@ -23,7 +23,7 @@ export const ReporteFinanciero = () => {
         const producto = productos.find((p) => p.id === venta.productoId);
         return sum + (producto?.costo || 0) * venta.cantidad;
     }, 0);
-    const gananciasNetas = totalIngresos - totalCostos - totalGastos;
+    const gananciasNetas = totalIngresos - totalCostos;
 
     const productoMasVendido = ventas.reduce((acc, venta) => {
         acc[venta.productoId] = (acc[venta.productoId] || 0) + venta.cantidad;
@@ -39,8 +39,17 @@ export const ReporteFinanciero = () => {
     const gastoMasAlto = gastos.reduce((max, gasto) => (gasto.monto > max ? gasto.monto : max), 0);
     const gastoMasAltoDescripcion = gastos.find((g) => g.monto === gastoMasAlto)?.descripcion || "No disponible";
 
+
+
+    
+
+
+    
+    
+
     return (
         <div className="p-6 w-[90%] min-h-screen">
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 <div className="p-4 bg-[#EE7890] text-white rounded-md shadow-md">
                     <h2 className="text-xl font-semibold mb-2">Total Ingresos</h2>
