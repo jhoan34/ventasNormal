@@ -2,18 +2,18 @@ export const routes = [
     
     {
         id: 4,
-        name: "Home",
+        name: "Inicio",
         path: "/"
 
     },
     {
         id: 5,
-        name: "gastos_ventas",
+        name: "Gastos y Ventas",
         path: "/h"
     },
     {
         id: 2,
-        name: "Historiales",
+        name: "Reporte Financiero",
         path: "/historiales"
     },
     {
