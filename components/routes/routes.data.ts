@@ -9,15 +9,17 @@ export const routes = [
         name: "Historiales",
         path: "/historiales"
     },
-    {
-        id: 3,
-        name: "listados",
-        path: "/listados"
-    },
+
     {
         id: 4,
         name: "Home",
         path: "/"
 
+    }
+    , 
+    {
+        id: 5,
+        name: "gastos_ventas",
+        path: "/h"
     }
 ]
