@@ -13,5 +13,11 @@ export const routes = [
         id: 3,
         name: "listados",
         path: "/listados"
+    },
+    {
+        id: 4,
+        name: "Home",
+        path: "/"
+
     }
 ]
