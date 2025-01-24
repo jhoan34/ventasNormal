@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import { FormGastos } from "./components/formgastos/formgastos";
 import { FormProductos } from "./components/formproductos/formproductos";
 import { FormVentas } from "./components/formventas/formVentas";
@@ -31,7 +31,7 @@ export default function Home() {
         </div>
       </section>
       <section className="w-[90%] relative p-8 bg-gray-950 rounded-lg shadow-lg flex flex-col items-center">
-          <button className="hover:bg-[#bd5167] absolute left-1 top-1 bg-[#EE7890] px-4 py-2 rounded-sm"> <Link className="text-white" href="/productos-descontinuados">Productos Descontinuados</Link></button>
+          <button className="hover:bg-[#bd5167] absolute left-1 top-1 bg-[#EE7890] px-4 py-2 rounded-sm"> <a className="text-white" href="/productos-descontinuados">Productos Descontinuados</a></button>
           <h2 className="text-2xl font-bold text-white mb-6 text-center border-b-4 border-pink-500 inline-block">
           Listado de Productos
           </h2>
