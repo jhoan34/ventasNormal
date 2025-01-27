@@ -38,8 +38,12 @@ export const ReporteFinanciero = () => {
 
     const gastoMasAlto = gastos.reduce((max, gasto) => (gasto.monto > max ? gasto.monto : max), 0);
     const gastoMasAltoDescripcion = gastos.find((g) => g.monto === gastoMasAlto)?.descripcion || "No disponible";
+    const total = gastos.reduce((acc, gasto) => {
+        acc += gasto.monto;
+        return acc;
+    }, 0);
 
-
+    const balanceGenteral = gananciasNetas -  total;
 
     
 
@@ -71,6 +75,10 @@ export const ReporteFinanciero = () => {
                     <h2 className="text-xl font-semibold mb-2">Gasto Más Alto</h2>
                     <p className="text-lg">{gastoMasAltoDescripcion}</p>
                     <p className="text-2xl font-bold">{gastoMasAlto.toLocaleString("es-CO")} COP</p>
+                </div>
+                <div className="p-4 bg-[#EE7890] text-white rounded-md shadow-md">
+                    <h2 className="text-xl font-semibold mb-2">Balance General</h2>
+                    <p className="text-2xl font-bold">{balanceGenteral.toLocaleString("es-CO")} COP</p>
                 </div>
             </div>
 
