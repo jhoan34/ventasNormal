@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Producto } from "@prisma/client";
 import type { ChangeEvent } from "react";
 import { useDatos } from "@/context/usedatos";
+import { Buscador } from "@/lib/buscador";
 
 export const FormVentas = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
@@ -21,17 +22,6 @@ export const FormVentas = () => {
     }
   }, [productosBD]);
 
-  const handleProductoChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const productoId = e.target.value;
-    setSelectedProductoId(productoId);
-
-    // Actualizar monto y ganancia basado en el producto seleccionado
-    const producto = productos.find((p) => p.id === productoId);
-    if (producto) {
-      setGanancia((producto.precio - producto.costo) * cantidad);
-      setMonto(producto.precio * cantidad);
-    }
-  };
 
   const handleCantidadChange = (e: ChangeEvent<HTMLInputElement>) => {
     const cantidadIngresada = parseInt(e.target.value, 10);
@@ -116,19 +106,7 @@ export const FormVentas = () => {
           <label htmlFor="producto" className="block text-sm font-medium text-white">
             Producto
           </label>
-          <select
-            id="producto"
-            value={selectedProductoId}
-            onChange={handleProductoChange}
-            className="mt-1 block w-full px-4 py-2 border text-white bg-gray-900 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          >
-            <option value="">Selecciona un producto</option>
-            {productos.map((producto) => (
-              <option key={producto.id} value={producto.id}>
-                {producto.nombre}
-              </option>
-            ))}
-          </select>
+          <Buscador cantidad={cantidad} setSelectedProductoId={setSelectedProductoId} setMonto={setMonto} setGanancia={setGanancia} productos={productos} />
         </div>
 
         {/* Cantidad */}
