@@ -83,6 +83,7 @@ export const ProductsList = () => {
       <div className="space-y-8">
         {productos
           .filter((prod) => Boolean(prod.descontinuo) === false)
+          .sort((a, b) => a.nombre.localeCompare(b.nombre))
           .map((producto: Producto) => {
             return (
               <div
