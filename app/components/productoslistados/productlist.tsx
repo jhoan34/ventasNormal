@@ -5,14 +5,22 @@ import { Producto } from "@prisma/client";
 import Link from "next/link";
 
 export const ProductsList = () => {
-  const [productos, setProductos] = useState<Producto[]>([]);
+  const [busqueda, setBusqueda] = useState("");
+  const [productosFiltrados, setProductosFiltrados] = useState<Producto[]>([]);
   const { productos: datos } = useDatos();
   const [message, setMessage] = useState<string | number>("");
   const [error, setError] = useState<boolean | null>(null);
 
   useEffect(() => {
-    setProductos(datos);
+    setProductosFiltrados(datos);
   }, [datos]);
+
+  useEffect(() => {
+    const filteredProducts = datos.filter((prod) =>
+      prod.nombre.toLowerCase().includes(busqueda.toLowerCase())
+    );
+    setProductosFiltrados(filteredProducts);
+  }, [busqueda, datos]); // Se debe filtrar a partir de `datos`, no de `productosFiltrados`
 
   const handleDelete = async (id: string) => {
     try {
@@ -29,7 +37,7 @@ export const ProductsList = () => {
       setTimeout(() => {
         setMessage("");
       }, 3000);
-      setProductos((prev) => prev.filter((prod) => prod.id !== id));
+      setProductosFiltrados((prev) => prev.filter((prod) => prod.id !== id));
     } catch (error) {
       setError(true);
       setMessage(
@@ -57,7 +65,7 @@ export const ProductsList = () => {
       setTimeout(() => {
         setMessage("");
       }, 3000);
-      setProductos((prev) => prev.filter((prod) => prod.id !== id));
+      setProductosFiltrados((prev) => prev.filter((prod) => prod.id !== id));
     } catch (error) {
       setError(true);
       setMessage(
@@ -71,6 +79,10 @@ export const ProductsList = () => {
 
   return (
     <div className="relative p-6 min-h-screen w-[95%]">
+      <div className="ml-4 mb-4 bg-black flex flex-col w-[90%] p-5 rounded-lg shadow-lg">
+        <label htmlFor="busqueda" className="text-white font-serif font-bold text-lg">Busqueda</label>
+        <input type="search" value={busqueda} onChange={(e) => setBusqueda(e.target.value)} placeholder="Buscar producto" />
+      </div>
       {message && (
         <div
           className={`${
@@ -81,7 +93,7 @@ export const ProductsList = () => {
         </div>
       )}
       <div className="space-y-8">
-        {productos
+        {productosFiltrados
           .filter((prod) => Boolean(prod.descontinuo) === false)
           .sort((a, b) => a.nombre.localeCompare(b.nombre))
           .map((producto: Producto) => {
