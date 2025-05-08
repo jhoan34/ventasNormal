@@ -22,6 +22,20 @@ export const FormVentas = () => {
     }
   }, [productosBD]);
 
+  const ImageReturn = () => {
+    if (selectedProductoId) {
+      const producto = productos.find((p) => p.id === selectedProductoId);
+      if (producto) {
+        return (
+          <img
+            src={producto.urlImagen}
+            className="w-full h-full rounded-lg"
+            alt="Imagen del producto"
+          />
+        );
+      }
+    }
+  };
   const handleCantidadChange = (e: ChangeEvent<HTMLInputElement>) => {
     const cantidadIngresada = parseInt(e.target.value, 10);
     if (isNaN(cantidadIngresada) || cantidadIngresada < 0) {
@@ -166,6 +180,9 @@ export const FormVentas = () => {
             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm text-white bg-gray-900 focus:outline-none"
           />
         </div>
+      </div>
+      <div className="w-[85%] min-h-[20vh] mx-auto my-10 flex items-center justify-center">
+        {selectedProductoId ? <ImageReturn /> : ""}
       </div>
 
       {/* Botón para registrar la venta */}

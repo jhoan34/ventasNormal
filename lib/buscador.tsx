@@ -50,11 +50,6 @@ export const Buscador = ({ setSelectedProductoId, productos }: PropsU) => {
               className="w-full p-3 flex flex-col items-center hover:bg-gray-800 cursor-pointer transition duration-150"
               onClick={() => handleProductoChange(producto.id)}
             >
-              <img
-                src={producto.urlImagen}
-                alt={producto.nombre}
-                className="w-[40px] h-[40px] object-cover rounded mb-2"
-              />
               <p className="text-white text-center text-sm font-medium">
                 {producto.nombre}
               </p>
