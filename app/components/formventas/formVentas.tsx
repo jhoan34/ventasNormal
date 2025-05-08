@@ -22,7 +22,6 @@ export const FormVentas = () => {
     }
   }, [productosBD]);
 
-
   const handleCantidadChange = (e: ChangeEvent<HTMLInputElement>) => {
     const cantidadIngresada = parseInt(e.target.value, 10);
     if (isNaN(cantidadIngresada) || cantidadIngresada < 0) {
@@ -93,7 +92,9 @@ export const FormVentas = () => {
     } catch (error) {
       setError(true);
       setMessage(
-        error instanceof Error ? error.message : "Error desconocido al registrar la venta."
+        error instanceof Error
+          ? error.message
+          : "Error desconocido al registrar la venta."
       );
     }
   };
@@ -103,15 +104,24 @@ export const FormVentas = () => {
       <div className="space-y-4 text-gray-950">
         {/* Selector de producto */}
         <div>
-          <label htmlFor="producto" className="block text-sm font-medium text-white">
+          <label
+            htmlFor="producto"
+            className="block text-sm font-medium text-white"
+          >
             Producto
           </label>
-          <Buscador cantidad={cantidad} setSelectedProductoId={setSelectedProductoId} setMonto={setMonto} setGanancia={setGanancia} productos={productos} />
+          <Buscador
+            setSelectedProductoId={setSelectedProductoId}
+            productos={productos}
+          />
         </div>
 
         {/* Cantidad */}
         <div>
-          <label htmlFor="cantidadVendida" className="block text-sm font-medium text-white">
+          <label
+            htmlFor="cantidadVendida"
+            className="block text-sm font-medium text-white"
+          >
             Cantidad Vendida
           </label>
           <input
@@ -126,7 +136,10 @@ export const FormVentas = () => {
 
         {/* Monto y Ganancia */}
         <div>
-          <label htmlFor="monto" className="block text-sm font-medium text-white">
+          <label
+            htmlFor="monto"
+            className="block text-sm font-medium text-white"
+          >
             Monto Total
           </label>
           <input
@@ -139,7 +152,10 @@ export const FormVentas = () => {
         </div>
 
         <div>
-          <label htmlFor="ganancia" className="block text-sm font-medium text-white">
+          <label
+            htmlFor="ganancia"
+            className="block text-sm font-medium text-white"
+          >
             Ganancia Estimada
           </label>
           <input
@@ -162,11 +178,14 @@ export const FormVentas = () => {
 
       {/* Mensajes de éxito o error */}
       {message && (
-        <p className={`mt-4 text-sm font-medium ${error ? "text-red-600" : "text-green-600"}`}>
+        <p
+          className={`mt-4 text-sm font-medium ${
+            error ? "text-red-600" : "text-green-600"
+          }`}
+        >
           {message}
         </p>
       )}
     </div>
   );
 };
-
