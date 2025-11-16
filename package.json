@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 5000 --turbopack",
     "build": "prisma generate && next build",
-    "start": "next start",
+    "start": "next start -p 5000",
     "lint": "next lint",
     "migrate:dev": "prisma migrate dev",
     "migrate:prod": "prisma migrate deploy"
